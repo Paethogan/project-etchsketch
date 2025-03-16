@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Etch a Sketch</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="grid-container">
+
+    </div>
+    <script>
+        const container = document.querySelector(".grid-container");
+
+        for (let i = 0; i < 16 * 16; i++) {
+            const square = document.createElement("div");
+            square.classList.add("grid-item");
+            container.appendChild(square);
+        }
+        
+
+
+
+
+
+
+
+    </script>
     
 </body>
 </html>
