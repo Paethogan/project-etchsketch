@@ -1,0 +1,36 @@
+:root {
+    --main-darkblue: #010812;
+    --main-gray: #B2BEB5;
+    --main-darkpurple: #1e0236;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 94.5%;
+    width: 94.5%;
+}
+
+.grid-item {
+    width: calc(100% / 16);
+    height: calc(100% / 16);
+    border: 0.1rem solid var(--main-darkblue);
+}
