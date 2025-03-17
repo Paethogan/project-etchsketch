@@ -14,11 +14,17 @@
     <script>
         
         const btn = document.querySelector("#button");
-        
+        const container = document.querySelector(".grid-container");
+        let divCount = {};
+
+        function reset() {
+            container.innerHTML = "";
+            divCount = {};
+        }
         
         function generateGrid() {  
-            const container = document.querySelector(".grid-container");
-            container.innerHTML = "";
+            
+            reset();
             let grid;
 
             while (true) {
@@ -45,7 +51,58 @@
             }
         }
 
-    btn.addEventListener('click', generateGrid);
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+    
+        function bgColor(event) {
+            let rndColor = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+            event.target.style.backgroundColor = rndColor;
+            return rndColor;
+        }
+
+        btn.addEventListener('click', generateGrid);
+    
+    
+        container.addEventListener('mouseover', (event) => {
+            if (event.target !== container) {
+                let color = bgColor(event);
+                console.log(color);
+                
+                const selected = event.target;
+                selected.style.backgroundColor = color;
+
+                const selectedId = selected.id;
+
+                if (!divCount[selectedId]) {
+                    divCount[selectedId] = 0;
+                }
+
+                divCount[selectedId]++;
+                const count = divCount[selectedId];
+
+                // calculate the percentage 10% per count
+                const darknessPercentage = Math.min(100, count * 10); // cap at 100% maximum darkness
+
+                // Extract the RBG components from the color string
+                const rgbValues = color.match(/\d+/g);
+                console.log(`Count: ${count}, darkness: ${darknessPercentage}%`);
+
+                let r = parseInt(rgbValues[0]); // parseInt() converts a string to an integer
+                let g = parseInt(rgbValues[1]);
+                let b = parseInt(rgbValues[2]); // putting the rgb values from bgColor function
+
+                // Apply darkness by subtracting from each RBG channel
+                const darkness = Math.floor((darknessPercentage / 100) * 255);
+                r = Math.max(0, r - darkness); // ensure that color does not go below 0 with Max.max(0)
+                g = Math.max(0, g - darkness);
+                b = Math.max(0, b - darkness);
+
+                // Create new backgroundColor string from array
+                const backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                selected.style.backgroundColor = backgroundColor;
+            }
+        });
 
 
         
