@@ -7,17 +7,47 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button class="button" id="button">Reset</button>
     <div class="grid-container">
 
     </div>
     <script>
-        const container = document.querySelector(".grid-container");
+        
+        const btn = document.querySelector("#button");
+        
+        
+        function generateGrid() {  
+            const container = document.querySelector(".grid-container");
+            container.innerHTML = "";
+            let grid;
 
-        for (let i = 0; i < 16 * 16; i++) {
-            const square = document.createElement("div");
-            square.classList.add("grid-item");
-            container.appendChild(square);
+            while (true) {
+                grid = Number(prompt("Enter a value for grid size: "));
+
+                if (isNaN(grid) || grid <= 0) {
+                alert("Please enter a valid number!");
+            } else if (grid > 100) {
+                alert("The max is 100!");
+            } else {
+                break;
+            }
         }
+ 
+            const wide = grid;
+            const long = grid;   
+            
+            for (let i = 0; i < wide * long; i++) {      
+                const square = document.createElement("div"); 
+                square.style.setProperty('--wide', wide);
+                square.style.setProperty('--long', long);         
+                square.classList.add("grid-item");
+                container.appendChild(square);
+            }
+        }
+
+    btn.addEventListener('click', generateGrid);
+
+
         
 
 
