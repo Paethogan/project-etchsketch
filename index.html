@@ -47,7 +47,10 @@
                 square.style.setProperty('--wide', wide);
                 square.style.setProperty('--long', long);         
                 square.classList.add("grid-item");
+
+                square.id = `grid-${i}`;
                 container.appendChild(square);
+
             }
         }
 
