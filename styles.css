@@ -21,6 +21,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 .grid-container {
@@ -34,4 +35,16 @@ body {
     width: calc(100% / var(--wide));
     height: calc(100% / var(--long));
     border: 0.1rem solid var(--main-darkblue);
+}
+
+button {
+    font-family: sans-serif;
+    font-weight: 600;
+    color: var(--main-darkpurple);
+    font-size: 16px;
+    padding: 6px 22px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--main-darkpurple);
+    background-color: var(--main-gray);
 }
